@@ -1,10 +1,7 @@
-# -
-Java 集合对⽐
+# Java 集合对⽐
 ⼀、 HashMap与HashTable的区别
 Hashtable是个过时的集合类，存在于Java API中很久了。在Java 4中被重写了，实现了Map接
-⼝，所以⾃此以后也成了Java集合框架中的⼀部分。 Hashtable和HashMap在Java⾯试中相当容
-易被问到，甚⾄成为了集合框架⾯试题中最常被考的问题，所以在参加任何Java⾯试之前，都不
-要忘了准备这⼀题。
+⼝，所以⾃此以后也成了Java集合框架中的⼀部分。
 HashMap和Hashtable都实现了Map接⼝，但决定⽤哪⼀个之前先要弄清楚它们之间的分别。主
 要的区别有：
 HashMap HashTable
@@ -12,12 +9,10 @@ HashMap HashTable
 更适合于单线程 更适合于多线程
 允许null值 不允许null值
 迭代器Iterator是fail-fast迭代器 迭代器enumerator不是fail-fast的
-初始容量为16 初始容量为11
-两者最主要的区别在于Hashtable是线程安全，⽽HashMap则⾮线程安全
+初始容量为16 初始容量为11。两者最主要的区别在于Hashtable是线程安全，⽽HashMap则⾮线程安全
 HashMap是⾮synchronized，⽽Hashtable是synchronized，这意味着Hashtable是线程安全的，
 多个线程可以共享⼀个Hashtable；⽽如果没有正确的同步的话，多个线程是不能共享HashMap
-的
-由于Hashtable的实现⽅法⾥⾯都添加了synchronized关键字来确保线程同步，所以在单线程环
+的。由于Hashtable的实现⽅法⾥⾯都添加了synchronized关键字来确保线程同步，所以在单线程环
 境下它⽐HashMap要慢。如果你不需要同步，只需要单⼀线程，那么使⽤HashMap性能要好过Hashtable。仅在你需要完全的线程安全的时候使⽤Hashtable，
 ⽽如果你使⽤Java 5或以上的话，请使⽤ConcurrentHashMap吧。
 线程安全的实现原理： jvm有⼀个main memory，⽽每个线程有⾃⼰的working memory，⼀个线
@@ -37,7 +32,7 @@ Collections.synchronizedMap()⽅法来获取⼀个线程安全的集合
 Collections.synchronizedXX⽅法也是类似原理）
 HashMap的迭代器Iterator是fail-fast迭代器，⽽Hashtable的enumerator迭代器不是fail-fast
 的。
-当有其它线程改变了HashMap的结构（增加或者移除元素），将会抛出
+##当有其它线程改变了HashMap的结构（增加或者移除元素），将会抛出
 ConcurrentModificationException，但迭代器本身的remove()⽅法移除元素则不会抛出
 ConcurrentModificationException异常。但这并不是⼀个⼀定发⽣的⾏为，要看JVM。这条同样
 也是Enumeration和Iterator的区别。
